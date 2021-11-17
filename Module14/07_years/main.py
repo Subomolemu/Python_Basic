@@ -11,12 +11,10 @@ def control(num):
 
 def identical_numbers(a, b):
     for year in range(a, b + 1):
-        x1 = year % 10
-        x2 = year // 10 % 10
-        x3 = year // 100 % 10
-        x4 = year // 1000 % 10
-        if (x1 == x2 and x1 == x3) or (x1 == x3 and x1 == x4) or (x2 == x3 and x2 == x4) or (x1 == x2 and x1 == x4):
-            print(year)
+        for num in str(year):
+            if str(year).count(num) >= 3:
+                print(year)
+                break
 
 
 f_year = int(input('Введите первый год, состоящий из четырехзначного числа: '))
