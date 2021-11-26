@@ -18,6 +18,5 @@ first_list.extend(second_list)
 for num in first_list:
     while first_list.count(num) > 1:
         first_list.remove(num)
-        continue
 
 print('Новый первый список с уникальными элементами:', first_list)
