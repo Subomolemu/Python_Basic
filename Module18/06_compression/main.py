@@ -1,7 +1,17 @@
 string = input('Введите строку: ')
-last_sym = ''
+code_string = ''
+old_sym = string[0]
+count = 1
+print(code_string)
 
-for i in range(len(string)):
-    if string[i] != last_sym:
-        print(string[i]+str(string.count(string[i])), end='')
-        last_sym = string[i]
+for i in range(1, len(string)):
+    if string[i] == old_sym:
+        count += 1
+    else:
+        code_string += old_sym + str(count)
+        count = 1
+    old_sym = string[i]
+
+code_string += old_sym + str(count)
+
+print('Закодированная строка', code_string)
