@@ -1,5 +1,5 @@
 file_name = input('Введите название файла: ')
-if not file_name.endswith('.txt') and not file_name.endswith('.dock'):
+if not file_name.endswith(('.txt', '.dock')):
     print('Ошибка: неверное расширение файла. Ожидалось .txt или .docx')
 else:
     ban_sym = '@№$%^&*()'
