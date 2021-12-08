@@ -21,6 +21,13 @@ text = 'vujgvmCfb tj ufscfu ouib z/vhm jdjuFyqm jt fscfuu uibo jdju/jnqm fTjnqm 
 shift = 25
 alphabet = 'abcdefghijklmnopqrstuvwxyz'
 new_text = [alphabet[check(sym, alphabet, shift)] if sym in alphabet else sym for sym in text]
+
+for index, symbol in enumerate(new_text):
+    if symbol == '(':
+        new_text[index] = "'"
+    elif symbol == '+':
+        new_text[index] = '"'
+
 new_text = ''.join(new_text).split()
 text = []
 
