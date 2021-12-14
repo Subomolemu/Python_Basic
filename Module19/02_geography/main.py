@@ -17,6 +17,6 @@ for i in range(1, 4):
             print(f'Город {citi} расположен в стране {country}.')
             check_citi = True
             break
-            
+
     if not check_citi:
         print(f'По городу {citi} данных нет.')
