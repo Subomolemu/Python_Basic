@@ -1,30 +1,20 @@
 max_num = int(input('Введите максимальное число: '))
-all_num_list = [str(x) for x in range(1, max_num + 1)]
+all_num_list = (str(x) for x in range(1, max_num + 1))
 my_nums = input('Нужное число есть среди вот этих чисел: ').lower().split()
-check_num_list = []
-check_num_list.extend(all_num_list)
+all_num_list = set(all_num_list)
+
 while ''.join(my_nums) != 'помогите!':
+    my_nums = set(my_nums)
     answer = input('Ответ Артема: ').lower()
     print()
-    if answer == 'нет':
-        for num in my_nums:
-            if num in check_num_list:
-                check_num_list.remove(num)
-            else:
-                continue
-
     if answer == 'да':
-        for num in all_num_list:
-            if num not in my_nums:
-                check_num_list.remove(num)
-            else:
-                continue
+        all_num_list &= my_nums
+    else:
+        all_num_list -= my_nums
 
     my_nums = input('Нужное число есть среди вот этих чисел: ').lower().split()
 
+all_num_list = ' '.join(all_num_list)
+sorted(all_num_list)
 print()
-check_num_list = ' '.join(check_num_list)
-print(f'Артём мог загадать следующие числа: {check_num_list}')
-
-
-
+print(f'Артём мог загадать следующие числа: {all_num_list}')
