@@ -24,19 +24,12 @@ store = {
     ],
 }
 
-for key, value in store.items():
+
+for key, value in goods.items():
+    print(f'{key} - ', end='')
     amount = 0
     cost = 0
-    for i in goods.keys():
-        if goods[i] == key:
-            print(f'{i} - ', end='')
-            break
-    for num in range(len(value)):
-        amount += value[num]['quantity']
-        cost += value[num]['quantity'] * value[num]['price']
-    print(f'{amount} шт, стоимость {cost} рублей.')
-
-
-
-
-
+    for i in store[value]:
+        amount += i['quantity']
+        cost += i['quantity'] * i['price']
+    print(f'{amount} шт, стоимость {cost} руб')
