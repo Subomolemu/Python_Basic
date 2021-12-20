@@ -10,4 +10,16 @@ violator_songs = {
     'Clean': 5.83
 }
 
-# TODO здесь писать код
+songs = int(input('Сколько песен выбрать: '))
+all_time = 0
+
+for i in range(songs):
+    song = input(f'Название {i + 1} песни: ')
+
+    while song not in violator_songs.keys():
+        print('Нет такой песни в списке, попробуйте еще раз.')
+        song = input(f'Название {i + 1} песни: ')
+
+    all_time += violator_songs[song]
+
+print(f'\nОбщее время звучания: {round(all_time, 2)} минут.')
