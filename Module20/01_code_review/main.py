@@ -1,44 +1,28 @@
-students = {
-    1: {
-        'name': 'Bob',
-        'surname': 'Vazovski',
-        'age': 23,
-        'interests': ['biology, swimming']
-    },
-    2: {
-        'name': 'Rob',
-        'surname': 'Stepanov',
-        'age': 24,
-        'interests': ['math', 'computer games', 'running']
-    },
-    3: {
-        'name': 'Alexander',
-        'surname': 'Krug',
-        'age': 22,
-        'interests': ['languages', 'health food']
-    }
-}
-
-
-def f(dict):
+def func():
     lst = []
-    string = ''
-    for i in dict:
-        lst += (dict[i]['interests'])
-        string += dict[i]['surname']
     cnt = 0
-    for s in string:
-        cnt += 1
+    for student, inform in students.items():
+        lst.append(inform[1])
+        cnt += len(student[1])
     return lst, cnt
 
 
-pairs = []
-for i in students:
-    pairs += (i, students[i]['age'])
+students = {
+    ('Bob', 'Vazovski'): (23, ['biology, swimming']),
+    ('Rob', 'Stepanov'): (24, ['math', 'computer games', 'running']),
+    ('Alexander', 'Krug'): (22, ['languages', 'health food'])
+}
+
+print(f'Список пар "ID студента - Возраст": ')
+for num, info in enumerate(students):
+    num += 1
+    print(f'{num}: {students[info][0]}')
 
 
-my_lst = f(students)[0]
-l = f(students)[1]
-print(my_lst, l)
+lst_interest, total_age = func()
 
-# TODO исправить код
+print('\nПолный список интересов всех студентов: ', end='')
+for i in sum(lst_interest, []):
+    print(f'{i}, ', end='')
+
+print(f'\nОбщая длина всех фамилий студентов: {total_age}')
