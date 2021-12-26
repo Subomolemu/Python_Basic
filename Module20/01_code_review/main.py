@@ -1,9 +1,9 @@
-def func():
+def func(students_dict):
     lst = []
     cnt = 0
-    for student, inform in students.items():
+    for students_dict, inform in students_dict.items():
         lst.append(inform[1])
-        cnt += len(student[1])
+        cnt += len(students_dict[1])
     return lst, cnt
 
 
@@ -19,7 +19,7 @@ for num, info in enumerate(students):
     print(f'{num}: {students[info][0]}')
 
 
-lst_interest, total_age = func()
+lst_interest, total_age = func(students)
 
 print('\nПолный список интересов всех студентов: ', end='')
 for i in sum(lst_interest, []):
