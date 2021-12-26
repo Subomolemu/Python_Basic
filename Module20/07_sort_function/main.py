@@ -1,7 +1,7 @@
 def tpl_sort(tpl):
     tpl = tuple(tpl)
     for i in tpl:
-        if type(i) != int:
+        if not isinstance(i, int):
             return tpl
 
     return tuple(sorted(tpl))
