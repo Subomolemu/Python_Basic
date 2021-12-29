@@ -1,9 +1,11 @@
-def calculating_math_func(data):
-    result = 1
+def calculating_math_func(my_list, data):
     for index in range(1, data + 1):
-        result *= index
-    result /= data ** 3
-    result = result ** 10
-    return result
+        my_list[0] *= index
+    my_list[0] /= data ** 3
+    my_list[0] = my_list[0] ** 10
 
-# TODO оптимизировать функцию
+
+result = [1]
+d = 5
+calculating_math_func(result, d)
+print(result[0])
