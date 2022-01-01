@@ -1,12 +1,10 @@
-def return_list(lst, out_list=[]):
-    if isinstance(lst, list):
-        for i in lst:
-            if isinstance(i, list):
-                for index in i:
-                    return_list(index)
-
-            else:
-                out_list.append(i)
+def return_list(lst):
+    out_list = []
+    for nested_value in lst:
+        if not isinstance(nested_value, list):
+            out_list.append(nested_value)
+        else:
+            out_list.extend(return_list(nested_value))
     return out_list
 
 
