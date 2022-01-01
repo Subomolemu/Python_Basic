@@ -1,11 +1,26 @@
-def calculating_math_func(my_list, data):
+def calculating_math_func(data, data_dict):
+    result = 1
+    
+    if data in data_dict:
+        return data_dict[data]
+    
     for index in range(1, data + 1):
-        my_list[0] *= index
-    my_list[0] /= data ** 3
-    my_list[0] = my_list[0] ** 10
+        result *= index
+        
+        if index in data_dict:
+            continue
+        else:
+            data_dict[index] = result
+            
+    result /= data ** 3
+    result = result ** 10
+    
+    return result
 
 
-result = [1]
-d = 5
-calculating_math_func(result, d)
-print(result[0])
+my_dict = {}
+number = int(input('Введите число:'))
+print(calculating_math_func(number, my_dict))
+
+number = int(input('Введите число:'))
+print(calculating_math_func(number, my_dict))
