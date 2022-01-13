@@ -13,27 +13,23 @@ def f2(x, y):
     return y / x
 
 
-try:
-    file = open('coordinates.txt', 'r')
-    for line in file:
-        nums_list = line.split()
-        res1 = f(int(nums_list[0]), int(nums_list[1]))
-        try:
-            res2 = f2(int(nums_list[0]), int(nums_list[1]))
+with open('coordinates.txt', 'w') as coordinates:
+    for _ in range(5):
+        random_numbers = f'{random.randint(10, 100)} ' \
+                         f'{random.randint(10, 100)}'
+        coordinates.write(f'{random_numbers}\n')
+        
+with open('coordinates.txt', 'r') as coordinates:
+    with open('result.txt', 'w') as result:
+        for i_line, line_number in enumerate(coordinates):
+            nums_list = line_number.split()
+            res1 = f(int(nums_list[0]), int(nums_list[1]))
             try:
+                res2 = f2(int(nums_list[0]), int(nums_list[1]))
                 number = random.randint(0, 100)
-                file_2 = open('result.txt', 'w')
+                
                 my_list = sorted([res1, res2, number])
-                file_2.write(' '.join(my_list))
-            except Exception:
-                print("Что-то пошло не так")
-        except Exception:
-            print("Что-то пошло не так со второй функцией")
-        finally:
-            file.close()
-            file_2.close()
-except Exception:
-    print("Что-то пошло не так с первой функцией")
-
-
-# TODO отредактировать и исправить программу
+                str_list = [str(round(num, 3)) for num in my_list]
+                result.write(f'{" ".join(str_list)}\n')
+            except ZeroDivisionError:
+                print(f'Ошибка в {i_line + 1} строке.')
