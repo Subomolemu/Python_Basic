@@ -2,10 +2,6 @@ import random
 import student
 
 
-def sort_key(a):
-    return a[1]
-
-
 student_list = []
 
 student_1 = student.Student('Сергей Сергеевич', 1,
@@ -29,18 +25,18 @@ student_9 = student.Student('Татьяна Романовна', 3,
 student_10 = student.Student('Григорий Григорьевич', 3,
                              [random.randint(2, 5) for _ in range(5)])
 
-student_list.append([student_1.info, student_1.average_score()])
-student_list.append([student_2.info, student_2.average_score()])
-student_list.append([student_3.info, student_3.average_score()])
-student_list.append([student_4.info, student_4.average_score()])
-student_list.append([student_5.info, student_5.average_score()])
-student_list.append([student_6.info, student_6.average_score()])
-student_list.append([student_7.info, student_7.average_score()])
-student_list.append([student_8.info, student_8.average_score()])
-student_list.append([student_9.info, student_9.average_score()])
-student_list.append([student_10.info, student_10.average_score()])
+student_list.append(student_1)
+student_list.append(student_2)
+student_list.append(student_3)
+student_list.append(student_4)
+student_list.append(student_5)
+student_list.append(student_6)
+student_list.append(student_7)
+student_list.append(student_8)
+student_list.append(student_9)
+student_list.append(student_10)
 
-student_list.sort(key=sort_key)
+student_list.sort(key=student.Student.sort_student)
 
 for student in student_list:
-    print(f'{student[0]}. Средний балл: {student[1]}.')
+    print(f'{student.info}. Средний балл: {student.sort_student()}.')

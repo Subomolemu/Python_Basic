@@ -4,8 +4,9 @@ class Student:
         self.group_num = group_num
         self.grade_list = grade_list
     
-    def average_score(self):
+    def sort_student(self):
         score = 0
         for i in self.grade_list:
             score += i
         return score
+    
