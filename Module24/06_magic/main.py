@@ -1,72 +1,83 @@
 class Water:
     def __add__(self, other):
-        if other == Wind:
+        if isinstance(other, Wind):
             return Storm
-        elif other == Fire:
+        elif isinstance(other, Fire):
             return Steam
-        elif other == Earth:
+        elif isinstance(other, Earth):
             return Mud
 
     
 class Fire:
     def __add__(self, other):
-        if other == Wind:
+        if isinstance(other, Wind):
             return Lightning
-        elif other == Water:
+        elif isinstance(other, Water):
             return Steam
-        elif other == Earth:
+        elif isinstance(other, Earth):
             return Lava
 
 
 class Wind:
     def __add__(self, other):
-        if other == Water:
+        if isinstance(other, Water):
             return Storm
-        elif other == Fire:
+        elif isinstance(other, Fire):
             return Lightning
-        elif other == Earth:
+        elif isinstance(other, Earth):
             return Dust
         
 
 class Earth:
     def __add__(self, other):
-        if other == Wind:
-            return Dust()
-        elif other == Fire:
-            return Lava()
-        elif other == Water:
-            return Mud()
+        if isinstance(other, Wind):
+            return Dust
+        elif isinstance(other, Fire):
+            return Lava
+        elif isinstance(other, Water):
+            return Mud
     
         
-class Storm(Water, Wind):
+class Storm:
     answer = 'При сложении воды и воздуха возник новый элемент - шторм!'
     
     
-class Lava(Fire, Earth):
+class Lava:
     answer = 'При сложении земли и огня возник новый элемент - лава!'
     
 
-class Mud(Earth, Water):
+class Mud:
     answer = 'При сложении земли и воды возник новый элемент - грязь!'
     
     
-class Dust(Earth, Wind):
+class Dust:
     answer = 'При сложении земли и ветра возник новый элемент - пыль!'
     
     
-class Lightning(Wind, Fire):
+class Lightning:
     answer = 'При сложении огня и ветра возник новый элемент - молния!'
     
     
-class Steam(Fire, Water):
+class Steam:
     answer = 'При сложении воды и огня возник новый элемент - пар!'
 
 
-res = Fire() + Water
-print(res.answer)
-
-res_1 = Wind() + Earth
-print(res_1.answer)
-
-res_2 = Fire() + Steam
-print(res_2)
+try:
+    a = Fire()
+    b = Water()
+    res = a + b
+    print(res.answer)
+    
+    a = Wind()
+    b = Earth()
+    res_1 = a + b
+    print(res_1.answer)
+    
+    a = Fire()
+    b = Steam()
+    res_2 = a + b
+    print(res_2.answer)
+    
+except AttributeError:
+    print(None)
+    
