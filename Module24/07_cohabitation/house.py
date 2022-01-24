@@ -1,6 +1,7 @@
 class House:
-    food = 50
-    money = 0
+    def __init__(self, food, money):
+        self.food = food
+        self.money = money
 
 
 

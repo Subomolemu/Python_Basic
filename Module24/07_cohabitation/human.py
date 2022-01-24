@@ -31,7 +31,7 @@ class Human:
         print(f'\n---{self.name}---\nПора сходить в магазин')
         self.house.food += 1
         self.house.money -= 1
-        print(f'После покупки еды ее количество поднялось до {self.house.food}'
+        print(f'После покупки еды ее количество поднялось до {self.house.food} '
               f'единиц.\n'
               f'Но количество денег уменьшилось, осталось {self.house.money} '
               f'единиц денег')

@@ -1,8 +1,8 @@
-import house
 import human
+import house
 
 
-my_house = house.House
+my_house = house.House(50, 0)
 human_1 = human.Human('Sergey', my_house)
 human_2 = human.Human('Elena', my_house)
 
