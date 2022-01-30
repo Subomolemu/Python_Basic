@@ -50,15 +50,8 @@ class Bus(Auto):
         print(f'На остановке вышло пассажиров: {passengers}\n')
         
     def move(self, s):
-        self.degree = self.degree % 360
-        if self.degree < 0:
-            self.degree += 360
-        rad_degree = self.degree / 57.2958
-        self.s = s
-        x = s * math.sin(rad_degree)
-        y = s * math.cos(rad_degree)
-        self.x += x
-        self.y += y
+        super().move(s)
+
         self.money += s * self.pay_for_km * self.passengers
         
     def __str__(self):
@@ -80,5 +73,5 @@ bus.move(10)
 print(bus)
 bus.passengers_left(3)
 bus.to_turn(0)
-bus.move(10)
+bus.move(5)
 print(bus)
