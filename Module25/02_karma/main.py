@@ -2,23 +2,28 @@ import random
 
 
 class KillError(BaseException):
-    pass
+    def __str__(self):
+        return 'KillError'
 
 
 class DrunkError(BaseException):
-    pass
+    def __str__(self):
+        return 'DrunkError'
 
 
 class CarCrashError(BaseException):
-    pass
+    def __str__(self):
+        return 'CarCrashError'
 
 
 class GluttonyError(BaseException):
-    pass
+    def __str__(self):
+        return 'GluttonyError'
 
 
 class DepressionError(BaseException):
-    pass
+    def __str__(self):
+        return 'DepressionError'
 
 
 class Life:
@@ -32,42 +37,30 @@ class Life:
         with open('karma.log', 'w', encoding='utf-8') as karma:
             while self.charm < 500:
                 self.day += 1
-                check = random.randint(1, 10)
-                if check == 10:
-                    
-                        error = random.randint(1, 5)
-                        self.count += 1
-                        try:
-                            if error == 1:
-                                raise KillError
-                            elif error == 2:
-                                raise DrunkError
-                            elif error == 3:
-                                raise CarCrashError
-                            elif error == 4:
-                                raise GluttonyError
-                            elif error == 5:
-                                raise DepressionError
-                        except KillError:
-                            karma.write(f'{self.count}. {self.day} день: '
-                                        f'{KillError}\n')
-                        except DrunkError:
-                            karma.write(f'{self.count}. {self.day} день:'
-                                        f'{DrunkError}\n')
-                        except CarCrashError:
-                            karma.write(f'{self.count}. {self.day} день:'
-                                        f':{CarCrashError}\n')
-                        except GluttonyError:
-                            karma.write(f'{self.count}. {self.day} день:'
-                                        f':{GluttonyError}\n')
-                        except DepressionError:
-                            karma.write(f'{self.count}. {self.day} день:'
-                                        f'{DepressionError}\n')
-                                
-                else:
+                try:
+                    check = random.randint(1, 10)
                     today_charm = random.randint(1, 7)
                     self.charm += today_charm
-        
+                    if check == 10:
+                        error = random.randint(1, 5)
+                        self.count += 1
+                        
+                        if error == 1:
+                            raise KillError
+                        elif error == 2:
+                            raise DrunkError
+                        elif error == 3:
+                            raise CarCrashError
+                        elif error == 4:
+                            raise GluttonyError
+                        elif error == 5:
+                            raise DepressionError
+                    
+                except (KillError, DrunkError, CarCrashError,
+                        GluttonyError, DepressionError) as caught_error:
+                    karma.write(f'{self.count}. {self.day} день: '
+                                f'{caught_error}\n')
+  
     def __str__(self):
         return f'500 кармы набрано на {self.day} день жизни.'
        
@@ -75,5 +68,3 @@ class Life:
 start = Life(0)
 start.one_day()
 print(start)
-
-

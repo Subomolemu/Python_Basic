@@ -8,7 +8,7 @@ class Family:
     def __init__(self, name, home):
         self.name = name
         self.home = home
-        
+    
     def eating(self):
         print(f'{self.name} кушает')
         for _ in range(30):
@@ -18,7 +18,7 @@ class Family:
             self.satiety += 1
             self.home.food -= 1
             self.home.total_food += 1
-            
+    
     def play_for_cat(self):
         self.happy += 5
         self.satiety -= 10
@@ -36,10 +36,9 @@ class Family:
     def __str__(self):
         return f'---{self.name}---\n' \
                f'\t-Уровень сытости - {self.satiety} единиц\n' \
-               f'\t-Уровень счастья - {self.happy} единиц' \
+               f'\t-Уровень счастья - {self.happy} единиц'
+    
 
-    
-    
 class Man(Family):
     def __init__(self, name, home):
         super().__init__(name, home)
@@ -49,12 +48,12 @@ class Man(Family):
         self.satiety -= 10
         self.home.total_money += 150
         print(f'{self.name} идет на работу.')
-        
+    
     def play_pc(self):
         self.happy += 20
         self.satiety -= 10
         print('Надо поиграть в компьютер.')
-
+    
     def actions(self):
         check = random.randint(1, 10)
         if self.satiety <= 20 and self.home.food > 0:
@@ -66,12 +65,12 @@ class Man(Family):
         elif check == 1:
             self.play_for_cat()
         self.check_status()
-    
-    
+
+
 class Woman(Family):
     def __init__(self, name, home):
         super().__init__(name, home)
-        
+    
     def pay_food(self):
         while self.home.food <= 50:
             self.home.food += 10
@@ -81,13 +80,13 @@ class Woman(Family):
             self.home.money -= 10
         self.satiety -= 10
         print(f'{self.name} идет за едой для семьи в магазин.')
-        
+    
     def pay_coat(self):
         self.happy += 60
         self.home.money -= 350
         self.home.total_coat += 1
         print('Нет настроения, надо срочно купить шубу.')
-        
+    
     def clean_home(self):
         self.home.dirt -= 100
         self.satiety -= 10
@@ -108,17 +107,17 @@ class Woman(Family):
         elif check == 1:
             self.play_for_cat()
         self.check_status()
-        
+
 
 class Baby(Family):
     def __init__(self, name, home):
         super().__init__(name, home)
-        
+    
     def play(self):
         self.happy += 10
         print(f'Ребенок {self.name} играет')
         self.home.dirt += 10
-
+    
     def eating(self):
         print(f'Ребенок {self.name} кушает')
         for _ in range(20):
@@ -129,10 +128,10 @@ class Baby(Family):
             self.home.food -= 1
             self.home.total_food += 1
         self.home.dirt += 10
-        
+    
     def sleep(self):
         self.satiety -= 10
-
+    
     def actions(self):
         check = random.randint(1, 10)
         if self.satiety <= 20 and self.home.food > 0:
@@ -149,12 +148,12 @@ class Baby(Family):
         return f'---Ребенок {self.name}---\n' \
                f'\t-Уровень сытости - {self.satiety} единиц\n' \
                f'\t-Уровень счастья - {self.happy} единиц'
-    
-    
+
+
 class Cat(Family):
     def __init__(self, name, home):
         super().__init__(name, home)
-
+    
     def eating(self):
         for _ in range(10):
             if self.home.food_for_cat == 0:
@@ -164,11 +163,11 @@ class Cat(Family):
             self.home.food_for_cat -= 1
             self.home.total_food += 1
         print(f'Кот {self.name} покушал.')
-
+    
     def sleep(self):
         self.satiety -= 10
         print(f'Кот {self.name} спит.')
-
+    
     def tear_wallpaper(self):
         self.home.dirt += 5
         self.satiety -= 10
@@ -183,12 +182,12 @@ class Cat(Family):
         elif check == 2:
             self.tear_wallpaper()
         self.check_status()
-        
+    
     def __str__(self):
         return f'---Кот {self.name}---\n' \
                f'\t-Уровень сытости - {self.satiety} единиц'
 
-            
+
 class Home:
     money = 100
     food = 50
@@ -204,7 +203,7 @@ class Home:
     def home_pollution(self):
         self.dirt += 5
         print('Под конец дня в доме стало немного грязнее...')
-
+    
     def __str__(self):
         return f'\nСправка по дому:\n' \
                f'\t- В тумбочке осталось {self.money} денег.\n' \
@@ -217,7 +216,7 @@ class Home:
               f'\t- съели {self.total_food} еды.\n'
               f'\t- Заработали {self.total_money} денег.\n'
               f'\t- Куплено {self.total_coat} шуб.')
-        
+
 
 my_home = Home()
 man = Man('Сергей', my_home)
@@ -238,7 +237,7 @@ for i in range(365):
         print()
         if not status:
             break
-            
+    
     my_home.home_pollution()
     print(my_home)
     if not status:
@@ -246,4 +245,3 @@ for i in range(365):
         break
     if i + 1 == 365:
         my_home.all_for_year()
-
