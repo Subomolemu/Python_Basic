@@ -1,19 +1,22 @@
+from collections.abc import Iterator
+
+
 class NumSquare:
     def __init__(self, num: int):
         self.start_num = 0
         self.num = num
         
-    def __iter__(self):
+    def __iter__(self) -> Iterator:
         return self
     
-    def __next__(self):
+    def __next__(self) -> int:
         if self.start_num != self.num:
             self.start_num += 1
             return self.start_num ** 2
         raise StopIteration
     
     
-def num_square(num):
+def num_square(num: int):
     start_num = 0
     while True:
         if start_num != num:
@@ -24,12 +27,17 @@ def num_square(num):
     
     
 my_number = int(input('Введите конечное число: '))
-for number in NumSquare(my_number):
+
+for number in NumSquare(num=my_number):
     print(number, end=' ')
+    
 print('\n')
-for number in num_square(my_number):
+
+for number in num_square(num=my_number):
     print(number, end=' ')
+    
 print('\n')
+
 number = [num**2 for num in range(1, my_number + 1)]
 for num in number:
     print(num, end=' ')
