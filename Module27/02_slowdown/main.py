@@ -1,10 +1,14 @@
-from typing import Callable
+from typing import Callable, Any
 import time
 
 
 def slowdown(func: Callable) -> Callable:
     time.sleep(2)
-    return func
+    
+    def wrapped(*args, **kwargs) -> Any:
+        res = func(*args, **kwargs)
+        return res
+    return wrapped
 
 
 @slowdown
