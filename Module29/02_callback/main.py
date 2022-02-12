@@ -1,16 +1,12 @@
-import functools
+
 from typing import Callable, Any
+app = dict()
 
 
 def callback(key: Any) -> Callable:
     def rise_func(func: Any) -> Callable:
-        
-        @functools.wraps(func)
-        def wrapped(*args, **kwargs) -> str:
-            res = func(*args, **kwargs)
-            app[key] = res
-            return res
-        return wrapped
+        app[key] = func()
+        return func
     return rise_func
 
 
@@ -20,8 +16,6 @@ def example():
     return 'OK'
 
 
-app = {}
-example()
 route = app.get('//')
 if route:
     response = route
