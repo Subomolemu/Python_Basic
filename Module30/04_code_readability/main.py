@@ -1,15 +1,26 @@
 from typing import List
 
 
-def import_list() -> List:
-    lst = list()
-    for i in range(1001):
-        lst.append(i)
-    return lst
+def prime_number(max_num) -> List[int]:
+    """Функция, возвращающая список простых чисел от 2 до max_num"""
+    num_lst: List = list()
+    for i in range(2, max_num + 1):
+        count = 0
+        for num in range(1, i // 2 + 1):
+            if i % num == 0:
+                count += 1
+        if count < 2:
+            num_lst.append(i)
+    return num_lst
 
 
-print(list(map(lambda x: x, [x for x in range(1001)])))
+print(prime_number(max_num=1000))
 
-print(import_list())
+a: List[int] = list(filter(lambda x:
+                           len(list(filter(lambda i: x % i == 0,
+                                           [num for num in
+                                            range(2, x // 2 + 1)]))) == 0,
+                           [x for x in range(2, 1001)]))  # очень сложно
+# читать, и к тому же сложно составить, гораздо проще функцией
 
-print(list(x for x in range(1001)))  # самый простой и читаемый, как по мне
+print(a)
