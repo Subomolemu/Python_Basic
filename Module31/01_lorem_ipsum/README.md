@@ -1,5 +1,6 @@
 ## Задача 1. Lorem ipsum
-Для макетов веб-страниц часто используется какой-нибудь текст-“рыба” - это условный, зачастую бессмысленный текст-заполнитель. Пусть дан вот такой сгенерированный текст:
+Для макетов веб-страниц часто используется какой-нибудь текст-“рыба” - это условный, 
+зачастую бессмысленный текст-заполнитель. Пусть дан вот такой сгенерированный текст:
 ````python
 text = """ Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
 Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, 
